@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   description:
     'Discover authentic home chefs near you in Dubai. Find real homemade food from talented cooks across the UAE.',
   keywords: ['home chef Dubai', 'homemade food UAE', 'authentic cuisine Dubai', 'home cook near me'],
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://nextdoorchef.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://nextdoorchef.com'),
   openGraph: {
     siteName: 'NextDoorChef',
     type: 'website',
