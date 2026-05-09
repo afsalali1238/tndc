@@ -22,6 +22,15 @@ const dmSans = DM_Sans({
   display: 'swap',
 })
 
+const getMetadataBase = () => {
+  try {
+    const url = process.env.NEXT_PUBLIC_SITE_URL || 'https://nextdoorchef.com'
+    return new URL(url.startsWith('http') ? url : `https://${url}`)
+  } catch (error) {
+    return new URL('https://nextdoorchef.com')
+  }
+}
+
 export const metadata: Metadata = {
   title: {
     default: 'NextDoorChef — Homemade Food in Dubai',
@@ -30,7 +39,7 @@ export const metadata: Metadata = {
   description:
     'Discover authentic home chefs near you in Dubai. Find real homemade food from talented cooks across the UAE.',
   keywords: ['home chef Dubai', 'homemade food UAE', 'authentic cuisine Dubai', 'home cook near me'],
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://nextdoorchef.com'),
+  metadataBase: getMetadataBase(),
   openGraph: {
     siteName: 'NextDoorChef',
     type: 'website',
