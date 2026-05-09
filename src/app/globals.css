@@ -1,0 +1,158 @@
+/* src/app/globals.css */
+/* ADAPTED FROM cr8: same structure, NextDoorChef colour palette */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Leaflet CSS — required for MapView ─────────────────────── */
+@import 'leaflet/dist/leaflet.css';
+
+/* ── Design Tokens ──────────────────────────────────────────── */
+:root {
+  --color-cream:        #FBF4E8;
+  --color-cream-dark:   #EFE4CC;
+  --color-amber-bg:     #FEF3DC;
+  --color-white:        #FFFFFF;
+  --color-saffron:      #E8960A;
+  --color-terra:        #C4522A;
+  --color-dark:         #1A0F06;
+  --color-muted:        #8C7860;
+  --color-border:       #E2D5C3;
+  --color-wa-green:     #25D366;
+  --color-verified:     #0F6E56;
+  --color-verified-bg:  #E1F5EE;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  --nav-height:   62px;
+  --radius-card:  12px;
+  --radius-input: 8px;
+  --radius-chip:  50px;
+}
+
+/* ── Base ────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-dark);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* ── Leaflet Overrides (IDENTICAL to cr8) ────────────────────── */
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius-card) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  font-family: var(--font-body) !important;
+}
+
+.leaflet-popup-content {
+  margin: 14px 16px !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+.leaflet-popup-tip-container {
+  display: none !important;
+}
+
+.leaflet-cluster-anim .leaflet-marker-icon,
+.leaflet-cluster-anim .leaflet-marker-shadow {
+  transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+}
+
+/* ── Utility Classes ─────────────────────────────────────────── */
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-saffron);
+  margin-bottom: 8px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-terra);
+  color: #fff;
+  border: none;
+  padding: 11px 22px;
+  border-radius: var(--radius-input);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-family: var(--font-body);
+  text-decoration: none;
+}
+.btn-primary:hover { opacity: 0.88; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--color-dark);
+  border: 1.5px solid var(--color-border);
+  padding: 10px 22px;
+  border-radius: var(--radius-input);
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  font-family: var(--font-body);
+}
+.btn-ghost:hover { border-color: var(--color-dark); }
+
+.input-field {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: var(--font-body);
+  color: var(--color-dark);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input-field:focus { border-color: var(--color-saffron); }
+.input-field::placeholder { color: var(--color-muted); }
+
+/* ── Skeleton shimmer (IDENTICAL to cr8) ─────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-cream-dark) 25%,
+    var(--color-amber-bg) 50%,
+    var(--color-cream-dark) 75%
+  );
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 6px;
+}
